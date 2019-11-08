@@ -1,6 +1,6 @@
 CREATE DATABASE db_links;
 
-USE db_links;
+USE db_contactos;
 
 -- TABLE USER
 -- all pasword wil be encrypted using SHA1
@@ -24,21 +24,23 @@ INSERT INTO users (id, username, password, fullname)
 
 SELECT * FROM users;
 
--- LINKS TABLE
-CREATE TABLE links (
+-- contacts TABLE
+CREATE TABLE contacts (
   id INT(11) NOT NULL,
-  title VARCHAR(150) NOT NULL,
-  url VARCHAR(255) NOT NULL,
-  description TEXT,
+  contact_fullname VARCHAR(150) NOT NULL,  
+  phone VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  direction VARCHAR(255) NOT NULL,
+  notes TEXT,
   user_id INT(11),
   created_at timestamp NOT NULL DEFAULT current_timestamp,
   CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
-ALTER TABLE links
+ALTER TABLE contacts
   ADD PRIMARY KEY (id);
 
-ALTER TABLE links
+ALTER TABLE contacts
   MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
 
-DESCRIBE links;
+DESCRIBE contacts;

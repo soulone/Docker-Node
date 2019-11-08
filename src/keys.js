@@ -4,8 +4,9 @@ module.exports = {
         connectionLimit: 10,
         host: 'localhost',
         user: 'root',
-        password: 'Password1',
-        database: 'db_links'
+        password: 'root',
+        database: 'db_contactos',
+        port: 8889
     }
 
 };

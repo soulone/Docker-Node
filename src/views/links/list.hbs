@@ -2,33 +2,34 @@
     <div class="row">
         {{#each links}}
         <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-body">
-                    <a href="{{url}}" target="_blank">
-                        <h3 class="card-title text-uppercase">
-                            {{title}}
-                        </h3>
-                    </a>
-                    <p class="m-2">{{description}}</p>
-                    <p class="text-muted">
-                        {{timeago created_at}}
-                    </p>
-                    <a class="btn btn-danger" href="/links/delete/{{id}}">
-                        Delete Link
+            <div class="card border-0 shadow-sm">                
+                <div class="card-body ">  
+                     <h3 class="card-title text-uppercase">
+                            {{contact_fullname}}
+                        </h3>                                     
+                    <p class="form-control">Telefono : {{phone}}</p>
+                    <p class="form-control">Correo :{{email}}</p>
+                    <p class="form-control">Dirección{{direction}}</p>                                
+                    <p class="form-control">Notas :{{notes}}</p>                    
+                </div>
+                      <div class="card-footer ">
+                        <a class="btn btn-danger" href="/links/delete/{{id}}">
+                        Eliminar contacto
                     </a>
                     <a class="btn btn-secondary" href="/links/edit/{{id}}">
-                        Edit
+                        Editar
                     </a>
-                </div>
+                    </div>
             </div>
         </div>
         {{else}}
         <div class="col-md-4 mx-auto">
             <div class="card card-body text-center">
-                <p>There are not Links saved yet.</p>
-                <a href="/links/add">Create One!</a>
+                <p>No tienes ningun contacto guardado.</p>
+                <a href="/links/add">Crea uno!</a>
             </div>
         </div>
         {{/each}}
     </div>
 </div>
+ 

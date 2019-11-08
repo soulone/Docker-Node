@@ -9,46 +9,50 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-    const { title, url, description } = req.body;
+    const { contact_fullname, phone, email,direction,notes } = req.body;
     const newLink = {
-        title,
-        url,
-        description,
+        contact_fullname,
+         phone,
+          email,
+          direction,
+          notes,
         user_id: req.user.id
     };
-    await pool.query('INSERT INTO links set ?', [newLink]);
+    await pool.query('INSERT INTO contacts set ?', [newLink]);
     req.flash('success', 'Link Saved Successfully');
     res.redirect('/links');
 });
 
 router.get('/', isLoggedIn, async (req, res) => {
-    const links = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
+    const links = await pool.query('SELECT * FROM contacts WHERE user_id = ?', [req.user.id]);
     res.render('links/list', { links });
 });
 
 router.get('/delete/:id', async (req, res) => {
     const { id } = req.params;
-    await pool.query('DELETE FROM links WHERE ID = ?', [id]);
+    await pool.query('DELETE FROM contacts WHERE ID = ?', [id]);
     req.flash('success', 'Link Removed Successfully');
     res.redirect('/links');
 });
 
 router.get('/edit/:id', async (req, res) => {
     const { id } = req.params;
-    const links = await pool.query('SELECT * FROM links WHERE id = ?', [id]);
+    const links = await pool.query('SELECT * FROM contacts WHERE id = ?', [id]);
     console.log(links);
     res.render('links/edit', {link: links[0]});
 });
 
 router.post('/edit/:id', async (req, res) => {
     const { id } = req.params;
-    const { title, description, url} = req.body; 
+    const { contact_fullname,phone,email,direction,notes} = req.body; 
     const newLink = {
-        title,
-        description,
-        url
+        contact_fullname,
+        phone,
+        email,
+        direction,
+        notes,
     };
-    await pool.query('UPDATE links set ? WHERE id = ?', [newLink, id]);
+    await pool.query('UPDATE contacts set ? WHERE id = ?', [newLink, id]);
     req.flash('success', 'Link Updated Successfully');
     res.redirect('/links');
 });

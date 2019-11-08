@@ -4,17 +4,23 @@
         <div class="card-body">
             <form action="/links/edit/{{link.id}}" method="POST">
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Title" value="{{link.title}}" autofocus>
+                    <input type="text" name="contact_fullname" class="form-control" placeholder="contact_fullname" value="{{link.contact_fullname}}" autofocus>
                 </div>
                 <div class="form-group">
-                    <input type="url" name="url" class="form-control" placeholder="URL" value="{{link.url}}">
+                    <input type="text" name="phone" class="form-control" placeholder="phone" value="{{link.phone}}" autofocus>
                 </div>
                 <div class="form-group">
-                    <textarea name="description" rows="2" class="form-control" placeholder="Description">{{link.description}}</textarea>
+                    <input type="text" name="email" class="form-control" placeholder="email" value="{{link.email}}" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="direction" class="form-control" placeholder="URL" value="{{link.direction}}">
+                </div>
+                <div class="form-group">
+                    <textarea name="notes" rows="2" class="form-control" placeholder="Nota">{{link.notes}}</textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success btn-block">
-                        Save
+                        Guardar
                     </button>
                 </div>
             </form>
