@@ -1,4 +1,4 @@
-CREATE DATABASE db_links;
+CREATE DATABASE db_contactos;
 
 USE db_contactos;
 
